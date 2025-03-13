@@ -5,12 +5,12 @@ This repository contains different C++ implementations for approximating the val
 - **Legendre Algorithm**
 - **Comparison of accuracy and execution time**
 
-## Files
+## 📂 Files
 - **pi_leibniz.cpp** - Implements the Leibniz series method
 - **pi_legendre.cpp** - Implements the Legendre method
 - **compare.cpp** - Compares accuracy and execution speed
 
-## Compilation & Execution
+## 🛠️ Compilation & Execution
 To compile the programs, run:
 \`\`\`bash
 g++ pi_leibniz.cpp -o leibniz
@@ -25,6 +25,6 @@ To execute:
 ./compare
 \`\`\`
 
-## License
+## 📜 License
 MIT License
 " > README.md
