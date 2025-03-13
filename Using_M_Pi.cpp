@@ -7,6 +7,7 @@ Useful in trigonometric calculations like sin(), cos(), etc.
 
 #include <iostream>
 #include <cmath> // Required for M_PI
+#include <corecrt_math_defines.h>
 
 using namespace std;
 

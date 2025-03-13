@@ -1,37 +1,34 @@
+// main.cpp
 #include <iostream>
-#include <cmath>
 #include <iomanip>
 #include <chrono>
+#include "utils.h"
+#include <cmath>
 
 using namespace std;
 
-double calculatePiLegendre(int iterations) {
-    double a = 1.0;
-    double b = 1.0 / sqrt(2);
-    double t = 0.25;
-    double p = 1.0;
+const double truePi = 3.141592653589793;
 
-    for (int i = 0; i < iterations; i++) {
-        double aNext = (a + b) / 2;
-        double bNext = sqrt(a * b);
-        double tNext = t - p * (a - aNext) * (a - aNext);
-        a = aNext;
-        b = bNext;
-        t = tNext;
-        p *= 2;
-    }
+void compareMethods(int leibnizTerms, int legendreIterations) {
+    auto startL = chrono::high_resolution_clock::now();
+    double piL = calculatePiLeibniz(leibnizTerms);
+    auto endL = chrono::high_resolution_clock::now();
+    
+    auto startG = chrono::high_resolution_clock::now();
+    double piG = calculatePiLegendre(legendreIterations);
+    auto endG = chrono::high_resolution_clock::now();
 
-    return (a + b) * (a + b) / (4 * t);
+    double errorL = fabs(truePi - piL);
+    double errorG = fabs(truePi - piG);
+
+    cout << fixed << setprecision(15);
+    cout << "Leibniz Approximation: " << piL << " | Error: " << errorL << " | Time: " << chrono::duration<double>(endL - startL).count() << "s\n";
+    cout << "Legendre Approximation: " << piG << " | Error: " << errorG << " | Time: " << chrono::duration<double>(endG - startG).count() << "s\n";
 }
 
 int main() {
-    int iterations = 5;
-    auto start = chrono::high_resolution_clock::now();
-    double pi = calculatePiLegendre(iterations);
-    auto end = chrono::high_resolution_clock::now();
-
-    cout << "Legendre Approximation: " << setprecision(15) << pi << endl;
-    cout << "Execution Time: " << chrono::duration<double>(end - start).count() << " seconds" << endl;
-
+    int leibnizTerms = 1000000;
+    int legendreIterations = 5;
+    compareMethods(leibnizTerms, legendreIterations);
     return 0;
 }
