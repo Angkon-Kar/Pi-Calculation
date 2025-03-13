@@ -30,3 +30,28 @@
 *.exe
 *.out
 *.app
+
+# Build directories (common for CMake and Makefiles)
+build/
+cmake-build-debug/
+dist/
+
+# Debugging files
+*.dSYM/
+*.stackdump
+
+# Makefile backup
+Makefile~
+CMakeCache.txt
+CMakeFiles/
+
+# IDE & Editor-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
